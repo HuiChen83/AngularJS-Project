@@ -11,8 +11,7 @@ namespace WebAppAngularJS.Models
 
         public string MilesBlwSpeed { get; set; }
 
-        public string Date { get; set; }
+        public string DateTime { get; set; }
 
-        public string Time { get; set; }
     }
 }

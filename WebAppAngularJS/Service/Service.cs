@@ -16,10 +16,11 @@ namespace WebAppAngularJS.Services
                 double Entry = 3.00;
                 double BlwSpeadChargeByMiles = Convert.ToDouble(trip.MilesBlwSpeed) * 5.00 * 0.35;
                 double AbvSpeedChargeByMins = Convert.ToDouble(trip.MinsAbvSpeed) * 0.35;
-                double NightSurCharge = isNight(trip.Time) * 0.50;
-                double PeakHourSurCharge = isPeakHour(trip.Date, trip.Time) * 1.00;
+                double NightSurCharge = IsNight(trip.DateTime) * 0.50;
+                double PeakHourSurCharge = IsPeakHour(trip.DateTime) * 1.00;
 
                 double result = NYSTax + Entry + BlwSpeadChargeByMiles + AbvSpeedChargeByMins + NightSurCharge + PeakHourSurCharge;
+
                 return result.ToString();
             }
             catch (Exception e)
@@ -29,14 +30,17 @@ namespace WebAppAngularJS.Services
         }
 
         //Rush Hours: Mon-Fri 16:00 to 20:00(Holiday NOT Considered)
-        private static int isPeakHour(string DateStr, string TimeStr)
+        private static int IsPeakHour(string DateTimeStr)
         {
-            DateTime date = DateTime.Parse(DateStr);
-            DateTime time = DateTime.Parse(TimeStr);
+            DateTime dateTime = DateTime.Parse(DateTimeStr);
+
+            TimeSpan peakStart = new TimeSpan(16, 0, 0); //16:00
+            TimeSpan peakEnd = new TimeSpan(20, 0, 0);  //20:00
+
             int result;
 
-            if ((date.DayOfWeek < DayOfWeek.Saturday && date.DayOfWeek > DayOfWeek.Sunday) &&
-                (time.Hour < 20 && time.Hour > 16))
+            if ((dateTime.DayOfWeek > DayOfWeek.Sunday && dateTime.DayOfWeek < DayOfWeek.Saturday)  //Workday
+                && (dateTime.TimeOfDay > peakStart && dateTime.TimeOfDay < peakEnd))    //PeakHour
             { result = 1; }
             else
             { result = 0; }
@@ -44,12 +48,16 @@ namespace WebAppAngularJS.Services
             return result;
         }
 
-        private static int isNight(string TimeStr)
+        private static int IsNight(string DateTimeStr)
         {
-            DateTime time = DateTime.Parse(TimeStr);
+            DateTime dateTime = DateTime.Parse(DateTimeStr);
+
+            TimeSpan nightStart = new TimeSpan(20, 0, 0); //20:00
+            TimeSpan nightEnd = new TimeSpan(6, 0, 0);//06:00
+
             int result;
 
-            if (time.Hour < 6 && time.Hour > 20)
+            if (dateTime.TimeOfDay > nightStart || dateTime.TimeOfDay < nightEnd)
             { result = 1; }
             else
             { result = 0; }
