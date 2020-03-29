@@ -1,0 +1,59 @@
+﻿<div style="margin-left:30px; width:800px">
+    <h2>Demo Project Requirement</h2>
+    <br />
+    <a href="/" class="btn btn-primary">To Taxi Fare Calculator</a>
+    <br />
+
+    <p><strong>Metered Rate of Fare</strong></p>
+    <p>The meter is required to be engaged or "hired" when a taxicab is occupied by anyone in addition to the driver</p>
+    <p>$3.00 upon entry</p>
+    <p>$0.35 for each additional unit</p>
+    <p>The unit fare is:</p>
+    <ul>
+        <li>one-fifth of a mile, when the taxicab is traveling at less than 6 miles an hour</li>
+        <li>60 seconds when not in motion or traveling at 6 miles per hour or more.</li>
+        <li>Night surcharge of $.50 after 8:00 PM &amp; before 6:00 AM</li>
+        <li>Peak hour Weekday Surcharge of $1.00 Monday - Friday after 4:00 PM &amp; before 8:00 PM</li>
+        <li>New York State Tax Surcharge of $.50 per ride.</li>
+        <li>All examples/problems will have distance in units of 1/5 of a mile and in minutes - there will be no fractional units)</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p><strong>Example:</strong></p>
+    <ul>
+        <li>Friday (2010-10-08)</li>
+        <li>5:30pm</li>
+        <li>Start at Lexington Ave &amp; E 57th St</li>
+        <li>End at Irving Pl &amp; E 15th St</li>
+        <li>Start = $3.00</li>
+        <li>Travels 2 miles at less than 6 mph for 15 mins = $3.50</li>
+        <li>Travels at more than 6 mph for 5 mins = $1.75</li>
+        <li>Peak hour Weekday Surcharge = $1.00 (ride started at 5:30 pm)</li>
+        <li>New York State Tax Surcharge = $0.50</li>
+        <li>Total = $9.75</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p><strong>Requirements:</strong></p>
+    <ul>
+        <li>C# solution with code that builds and runs</li>
+        <ul>
+            <li>Solution should run within Visual Studio 2015/2017.</li>
+            <li>Unit tests within .NET (MS Test)</li>
+        </ul>
+        <li>MVC Design Pattern</li>
+        <li>Good separation of concerns</li>
+        <li>UI should be developed within the Angular.JS framework</li>
+        <ul>
+            <li>Display usage of promises and controllers within Angular</li>
+            <li>UI for the following fields</li>
+            <ul>
+                <li>Number of minutes while traveling above 6 mph</li>
+                <li>Number of miles traveled while traveling below 6 mph</li>
+                <li>Date</li>
+                <li>Time of start of ride</li>
+                <li>Implement a simple directive with validation</li>
+            </ul>
+            <li>Unit tests in Jasmine, mocha, or a similar framework.</li>
+        </ul>
+        <li>Integration test that takes in the inputs and give the expected value (use the inputs from the example above) using protractor or a similar framework</li>
+    </ul>
+</div>

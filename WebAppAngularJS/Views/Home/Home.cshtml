@@ -1,0 +1,31 @@
+﻿<div style="margin-left:30px; width:300px">
+    <h3>Taxi Fare Calculator</h3>
+    <form name="CalculatorForm" ng-submit="SubmitforCalc();" class="form-group-sm">
+        <div class="form-group">
+            <label for="trip.MinsAbvSpeed">Mins Above 6 Mph/Mins NOT in Motion:</label>
+            <input type="text" class="form-control" ng-model="trip.MinsAbvSpeed" />
+        </div>
+        <div class="form-group">
+            <label for="trip.MilesBlwSpeed">Miles Below 6 Mph:</label>
+            <input type="text" class="form-control" ng-model="trip.MilesBlwSpeed" />
+        </div>
+        <div class="form-group">
+            <label for="trip.Date">Date:</label>
+            <input type="date" class="form-control" ng-model="trip.Date" required />
+        </div>
+        <div class="form-group">
+            <label for="trip.Time">Time:</label>
+            <input type="time" class="form-control" ng-model="trip.Time" required />
+        </div>
+        <div class="form-group">
+            <input type="reset" class="btn btn-secondary" value="Reset" />
+            <input type="submit" class="btn btn-success" value="Submit" ng-disabled="CalculatorForm.$invalid" />
+        </div>
+        <div class="form-group">
+            <label for="Result">Est. Fare:</label>
+            <input id="Result" type="text" class="form-control" ng-value="result">
+        </div>
+    </form>
+    <br />
+    <a href="/#/Page1" class="btn btn-primary">To Project Requirement</a>
+</div>
