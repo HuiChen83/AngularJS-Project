@@ -3,11 +3,11 @@
     <form name="CalculatorForm" ng-submit="SubmitforCalc();" class="form-group-sm">
         <div class="form-group">
             <label for="trip.MinsAbvSpeed">Mins Above 6 Mph/Mins NOT in Motion:</label>
-            <input type="text" class="form-control" ng-model="trip.MinsAbvSpeed" />
+            <input type="text" class="form-control" ng-model="trip.MinsAbvSpeed" integer ng-init="trip.MinsAbvSpeed ='0'"/>
         </div>
         <div class="form-group">
             <label for="trip.MilesBlwSpeed">Miles Below 6 Mph:</label>
-            <input type="text" class="form-control" ng-model="trip.MilesBlwSpeed" />
+            <input type="text" class="form-control" ng-model="trip.MilesBlwSpeed" integer ng-init="trip.MilesBlwSpeed ='0'" />
         </div>
         <div class="form-group">
             <label for="trip.Date">Date:</label>
