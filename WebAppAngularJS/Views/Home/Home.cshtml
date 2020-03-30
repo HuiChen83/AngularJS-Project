@@ -3,15 +3,15 @@
     <form name="CalculatorForm" ng-submit="SubmitforCalc();" class="form-group-sm">
         <div class="form-group">
             <label for="trip.MinsAbvSpeed">Mins Above 6 Mph / Mins NOT in Motion:</label>
-            <input type="text" class="form-control" ng-model="trip.MinsAbvSpeed" integer ng-init="trip.MinsAbvSpeed ='0'" />
+            <input type="text" class="form-control" ng-model="trip.MinsAbvSpeed" integer ng-init="trip.MinsAbvSpeed ='0'" ng-change="ClearResult()" required/>
         </div>
         <div class="form-group">
             <label for="trip.MilesBlwSpeed">Miles Below 6 Mph:</label>
-            <input type="text" class="form-control" ng-model="trip.MilesBlwSpeed" integer ng-init="trip.MilesBlwSpeed ='0'" />
+            <input type="text" class="form-control" ng-model="trip.MilesBlwSpeed" integer ng-init="trip.MilesBlwSpeed ='0'" ng-change="ClearResult()" required/>
         </div>
         <div class="form-group">
             <label for="trip.Date">Date & Time Start:</label>
-            <input type="datetime-local" class="form-control" ng-model="trip.DateTime" required />
+            <input type="datetime-local" class="form-control" ng-model="trip.DateTime" ng-change="ClearResult()" required />
         </div>
         <div class="form-group">
             <input type="reset" class="btn btn-secondary" value="Reset" />
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="Result">Est. Fare:</label>
-            <input id="Result" type="text" class="form-control" ng-value="result">
+            <input id="Result" type="text" class="form-control" ng-model="result" disabled>
         </div>
     </form>
     <br />

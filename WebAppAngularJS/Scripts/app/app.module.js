@@ -9,20 +9,26 @@
             $scope.SubmitforCalc = function () {
                 TripService.CalculateFare($scope.trip);
             }
+
+            $scope.ClearResult = function () {
+                var resultField = angular.element(document.querySelector('#Result'));
+                    resultField.val('');
+            }
         })
+
         .factory('TripService', ['$http', function ($http) {
             var fn = {};
             fn.CalculateFare = function (trip) {
                 $http.post('/Trip/FareCalculate', trip)
                     .then(function (response) {
                         var resultField = angular.element(document.querySelector('#Result'));
-                        resultField.val(response.data);
+                        resultField.val('$' + response.data);
                     },
                         function (response) {
                             var resultField = angular.element(document.querySelector('#Result'));
                             resultField.val('HTTP Request Failed ' + response.data);
                         })
-            }
+            }         
             return fn;
         }])
 

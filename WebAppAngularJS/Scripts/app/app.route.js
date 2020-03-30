@@ -11,5 +11,6 @@
                 .when('/Page1', {
                     templateUrl: 'Home/Page1'
                 })
+                .otherwise({ redirectTo: '/' });
         }])
 })();

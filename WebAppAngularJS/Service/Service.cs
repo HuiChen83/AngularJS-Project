@@ -12,6 +12,9 @@ namespace WebAppAngularJS.Services
         {
             try
             {
+                trip.MinsAbvSpeed = !string.IsNullOrEmpty(trip.MinsAbvSpeed) ? trip.MinsAbvSpeed : "0";
+                trip.MilesBlwSpeed = !string.IsNullOrEmpty(trip.MilesBlwSpeed) ? trip.MilesBlwSpeed : "0";
+
                 double NYSTax = 0.50;
                 double Entry = 3.00;
                 double BlwSpeadChargeByMiles = Convert.ToDouble(trip.MilesBlwSpeed) * 5.00 * 0.35;
