@@ -20,7 +20,8 @@ namespace WebAppAngularJS.Tests
             string expected = "9.75";
 
             //Act
-            string actual = WebAppAngularJS.Services.ServiceHelper.CalculateFare(trip);
+            Services.ServiceHelper helper = new Services.ServiceHelper();
+            string actual = helper.CalculateFare(trip);
 
             //Assert
             Assert.AreEqual(expected, actual);

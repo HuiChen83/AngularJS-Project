@@ -8,32 +8,34 @@ namespace WebAppAngularJS.Services
 {
     public class ServiceHelper
     {
-        public static string CalculateFare(Trip trip)
+        private const double NYSTax = 0.50;
+        private const double EntryFee = 3.00;
+
+        public string CalculateFare(Trip trip)
         {
             try
             {
                 trip.MinsAbvSpeed = !string.IsNullOrEmpty(trip.MinsAbvSpeed) ? trip.MinsAbvSpeed : "0";
                 trip.MilesBlwSpeed = !string.IsNullOrEmpty(trip.MilesBlwSpeed) ? trip.MilesBlwSpeed : "0";
 
-                double NYSTax = 0.50;
-                double Entry = 3.00;
                 double BlwSpeadChargeByMiles = Convert.ToDouble(trip.MilesBlwSpeed) * 5.00 * 0.35;
                 double AbvSpeedChargeByMins = Convert.ToDouble(trip.MinsAbvSpeed) * 0.35;
-                double NightSurCharge = IsNight(trip.DateTime) * 0.50;
-                double PeakHourSurCharge = IsPeakHour(trip.DateTime) * 1.00;
+                double NightSurCharge = AtNight(trip.DateTime) * 0.50;
+                double PeakHourSurCharge = InPeakHour(trip.DateTime) * 1.00;
 
-                double result = NYSTax + Entry + BlwSpeadChargeByMiles + AbvSpeedChargeByMins + NightSurCharge + PeakHourSurCharge;
+                double result = NYSTax + EntryFee + BlwSpeadChargeByMiles + AbvSpeedChargeByMins + NightSurCharge + PeakHourSurCharge;
 
-                return result.ToString();
+                return result.ToString("0.##");
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                //ToDo: Log  e.StackTrace e.Message
                 return "Error";
             }
         }
 
         //Rush Hours: Mon-Fri 16:00 to 20:00(Holiday NOT Considered)
-        private static int IsPeakHour(string DateTimeStr)
+        private int InPeakHour(string DateTimeStr)
         {
             DateTime dateTime = DateTime.Parse(DateTimeStr);
 
@@ -51,7 +53,7 @@ namespace WebAppAngularJS.Services
             return result;
         }
 
-        private static int IsNight(string DateTimeStr)
+        private int AtNight(string DateTimeStr)
         {
             DateTime dateTime = DateTime.Parse(DateTimeStr);
 

@@ -8,18 +8,12 @@ using WebAppAngularJS.Services;
 
 namespace WebAppAngularJS.Controllers
 {
-    public class TripController : Controller
+    public class TripController : Controller, ITripController
     {
-        private CrudContext _context = null;
-        // GET: Trip
-        public TripController()
-        {
-            _context = new CrudContext();
-        }
-
         public JsonResult FareCalculate(Trip trip)
         {
-            string Result = ServiceHelper.CalculateFare(trip);
+            ServiceHelper helper = new ServiceHelper();
+            string Result = helper.CalculateFare(trip);
             return Json(Result);
         }
     }
