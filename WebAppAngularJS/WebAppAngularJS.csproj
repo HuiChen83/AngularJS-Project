@@ -934,6 +934,7 @@
     <Content Include="node_modules\which\LICENSE" />
     <Content Include="node_modules\which\package.json" />
     <Content Include="node_modules\which\README.md" />
+    <Content Include="package-lock.json" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />

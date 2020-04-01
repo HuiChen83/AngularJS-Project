@@ -1,32 +1,31 @@
-﻿describe('Testing Factory Http Post', function () {
+﻿describe('App Test', function () {
     beforeEach(module('app'));
-    var TripService, httpBackend;
 
-    beforeEach(inject(function ($httpBackend, _TripService_) {
-        TripService = _TripService_;
-        httpBackend = $httpBackend;
+    describe('Factory Test', function () {
+        var fn, httpbackend;
 
-    }));
+        beforeEach(inject(function ($httpBackend, _TripService_) {
+            TripService = _TripService_;
+            httpBackend = $httpBackend;
+        }));
 
-    it('FactoryTestSpec', function () {
-        var returnData = '$9.75';
+        it('FactoryTestSpec', function () {
+            var expectedData = '9.75';
 
-        var trip = {
-            'MinsAbvSpeed': '5',
-            'MilesBlwSpeed': '2',
-            'DateTime': '2010 - 10 - 08T21:30:00.000Z'
-        };
+            var trip = {
+                'trip': {
+                    'MinsAbvSpeed': '5',
+                    'MilesBlwSpeed': '2',
+                    'DateTime': '2010 - 10 - 08T21:30:00.000Z'
+                }
+            };
 
+            var dataReturn;
+            TripService.CalculateFare(trip)
+                .then(function (response) { dataReturn = response.data; },
+                function (error) { dataReturn = 'HTTP ERROR';});
 
-        var returnedPromise = TripService.CalculateFare(trip);
-       
-        var result;
-        returnedPromise.then(function (response) {
-            result = response.data;
+            expect(expectedData).toEqual(dataReturn);   //response undefined??
         });
-
-        expect(result).toEqual(returnData);
-    })
-
-
+    });
 });

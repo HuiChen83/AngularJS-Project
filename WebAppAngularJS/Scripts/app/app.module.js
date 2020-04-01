@@ -12,7 +12,7 @@
                         $scope.result = '$' + response.data;
                     },
                     function (error) {
-                        $scope.result = 'Http Request Failed.'   //Or give an Alert?
+                        $scope.result = 'Http Request Failed.';   //Or give an Alert?
                     });
             }
 
